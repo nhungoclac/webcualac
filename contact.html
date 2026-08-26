@@ -343,68 +343,6 @@
       </div>
     </main>
 
-    <!-- AI Chatbot Floating Trigger & Box -->
-    <div
-      class="chatbot-trigger"
-      id="chatbotTrigger"
-      title="Trò chuyện cùng Trợ lý AI Ngọc Như"
-    >
-      <i class="fas fa-robot"></i>
-    </div>
-
-    <div class="chatbot-box" id="chatbotBox">
-      <div class="chatbot-header">
-        <div class="chatbot-header-info">
-          <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
-          <div>
-            <div style="font-weight: 700; font-size: 0.9rem">
-              Trợ Lý AI - Ngọc Như
-            </div>
-            <div style="font-size: 0.72rem; opacity: 0.85">Trực tuyến 24/7</div>
-          </div>
-        </div>
-        <i
-          class="fas fa-times"
-          id="chatbotClose"
-          style="cursor: pointer; font-size: 1.1rem"
-        ></i>
-      </div>
-
-      <div class="chatbot-messages" id="chatMessages">
-        <div class="chat-msg bot">
-          Bạn có câu hỏi gì về cách gửi Formspree hoặc kết nối qua Gmail/Socials
-          không?
-        </div>
-      </div>
-
-      <div class="chatbot-suggestions">
-        <button
-          class="chip-btn"
-          onclick="sendQuickChat('Email chính xác là gì?')"
-        >
-          📧 Email
-        </button>
-        <button
-          class="chip-btn"
-          onclick="sendQuickChat('Formspree hoạt động thế nào?')"
-        >
-          📝 Formspree
-        </button>
-      </div>
-
-      <div class="chatbot-input-bar">
-        <input
-          type="text"
-          id="chatInput"
-          placeholder="Nhập câu hỏi..."
-          onkeypress="handleChatEnter(event)"
-        />
-        <button id="chatSendBtn" onclick="sendMessage()">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </div>
-
     <!-- Tawk.to Widget Script Integration -->
     <script type="text/javascript">
       var Tawk_API = Tawk_API || {},
@@ -419,15 +357,6 @@
         s0.parentNode.insertBefore(s1, s0);
       })();
     </script>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p>
-        © 2026 Lạc Ngọc Như. Designed with
-        <i class="fas fa-heart" style="color: #f43f5e"></i> White & Blue
-        Tech-Marketing Style.
-      </p>
-    </footer>
 
     <!-- Script -->
     <script src="script.js"></script>
