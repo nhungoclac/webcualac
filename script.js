@@ -237,50 +237,8 @@ document.addEventListener("DOMContentLoaded", () => {
      --------------------------------------------------------- */
   const albumImages = [
     {
-      url: "photo/nct2025.jpg",
-      caption: "Chuyến đi Nam Cát Tiên 2025 🌿",
-      category: "dulich",
-      date: "2025",
-    },
-    {
-      url: "photo/hue2025.jpg",
-      caption: "Khám phá Cố Đô Huế 2025 🏯",
-      category: "dulich",
-      date: "2025",
-    },
-    {
-      url: "photo/qb2025.jpg",
-      caption: "Quảng Bình - Vùng đất di sản 2025 🏞️",
-      category: "dulich",
-      date: "2025",
-    },
-    {
-      url: "photo/VT2025.jpg",
-      caption: "Biển Vũng Tàu 2025 🌊",
-      category: "dulich",
-      date: "2025",
-    },
-    {
-      url: "photo/vt2023.jpg",
-      caption: "Kỷ niệm Vũng Tàu 2024 🏖️",
-      category: "dulich",
-      date: "2024",
-    },
-    {
-      url: "photo/ctxh1.jpg",
-      caption: "Mùa Hè Xanh / MĐYT Dak Nong 2023 💚",
-      category: "hoatdong",
-      date: "2023",
-    },
-    {
-      url: "photo/ctxh2.jpg",
-      caption: "Hoạt động TGL Vũng Tàu 2023 ✨",
-      category: "hoatdong",
-      date: "2023",
-    },
-    {
       url: "photo/qs1.jpg",
-      caption: "Kỳ học Quân Sự đồng đội 2022 🎖️",
+      caption: "Kỳ học Quân Sự 2022 🎖️",
       category: "kyniem",
       date: "2022",
     },
@@ -289,6 +247,48 @@ document.addEventListener("DOMContentLoaded", () => {
       caption: "Kỷ niệm khu quân sự 2022 📸",
       category: "kyniem",
       date: "2022",
+    },
+    {
+      url: "photo/ctxh2.jpg",
+      caption: "Trại giữ lửa Vũng Tàu 2023 ✨",
+      category: "hoatdong",
+      date: "2023",
+    },
+    {
+      url: "photo/ctxh1.jpg",
+      caption: "MĐYT Dak Nong 2023 💚",
+      category: "hoatdong",
+      date: "2023",
+    },
+    {
+      url: "photo/vt2023.jpg",
+      caption: "Kỷ niệm Vũng Tàu 2024 🏖️",
+      category: "dulich",
+      date: "2024",
+    },
+    {
+      url: "photo/VT2025.jpg",
+      caption: "Biển Vũng Tàu 2025 🌊",
+      category: "dulich",
+      date: "2025",
+    },
+    {
+      url: "photo/nct2025.jpg",
+      caption: "Nam Cát Tiên 2025 🌿",
+      category: "dulich",
+      date: "2025",
+    },
+    {
+      url: "photo/hue2025.jpg",
+      caption: "Huế 2025 🏯",
+      category: "dulich",
+      date: "2025",
+    },
+    {
+      url: "photo/qb2025.jpg",
+      caption: "Quảng Bình 2025 🏞️",
+      category: "dulich",
+      date: "2025",
     },
   ];
 
