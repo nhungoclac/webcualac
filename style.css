@@ -394,21 +394,28 @@ body.dark .site-header {
 .hero-role-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 1.1rem;
   color: var(--accent-blue);
   font-weight: 600;
 }
 
+.prompt-symbol {
+  font-family: 'Space Grotesk', monospace;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
 .typewriter-text {
-  border-right: 2px solid var(--accent-cyan);
+  color: var(--accent-blue);
+  border-right: 2px solid var(--accent-blue);
   white-space: nowrap;
   animation: blink 0.75s step-end infinite;
 }
 
 @keyframes blink {
   from, to { border-color: transparent }
-  50% { border-color: var(--accent-cyan); }
+  50% { border-color: var(--accent-blue); }
 }
 
 .hero-badges {
