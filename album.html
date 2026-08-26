@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>webcualac</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-code-branch"></i></div>
+        <span class="brand-text">LacNgocNhu</span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Trang chủ</a>
+        <a href="album.html" class="nav-link active"><i class="fas fa-images"></i> Album ảnh</a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-paper-plane"></i> Liên hệ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Dark / Light Theme Toggle -->
+        <button class="btn-icon" id="themeToggle" title="Đổi giao diện Sáng / Tối">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+    
+    <section class="card full-width" style="margin-bottom: 24px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <h1 class="card-title" style="margin-bottom:6px;">
+            <i class="fas fa-camera-retro"></i> 📸 Khoảnh Khắc & Hành Trình Kỷ Niệm
+          </h1>
+          <p style="color:var(--text-sub); font-size:0.95rem;">
+            Những hình ảnh lưu giữ kỷ niệm hoạt động sinh viên, chuyến đi thực tế và trải nghiệm đáng nhớ của Lạc Ngọc Như 🌸
+          </p>
+        </div>
+        <div class="badge badge-tech" style="font-size:0.9rem; padding:8px 16px;">
+          <i class="fas fa-images"></i> Total: 9 Moments
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Buttons & Gallery Section -->
+    <section class="card full-width">
+      <div class="album-controls">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i> Tất Cả (9)</button>
+        <button class="filter-btn" data-filter="hoatdong"><i class="fas fa-hands-helping"></i> Hoạt Động & Xã Hội</button>
+        <button class="filter-btn" data-filter="dulich"><i class="fas fa-plane-departure"></i> Du Lịch & Trải Nghiệm</button>
+        <button class="filter-btn" data-filter="kyniem"><i class="fas fa-shield-alt"></i> Kỷ Niệm Quân Sự</button>
+      </div>
+
+      <!-- Photo Grid -->
+      <div class="album-grid" id="albumGrid">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close" id="modalCloseBtn">&times;</span>
+    <button class="modal-nav-btn modal-prev" id="modalPrevBtn"><i class="fas fa-chevron-left"></i></button>
+    <img class="modal-content" id="modalImage" alt="Gallery detail view" />
+    <button class="modal-nav-btn modal-next" id="modalNextBtn"><i class="fas fa-chevron-right"></i></button>
+    <div id="modalCaption" class="modal-caption"></div>
+  </div>
+
+  <!-- AI Chatbot Floating Trigger & Box -->
+  <div class="chatbot-trigger" id="chatbotTrigger" title="Trò chuyện cùng Trợ lý AI Ngọc Như">
+    <i class="fas fa-robot"></i>
+  </div>
+
+  <div class="chatbot-box" id="chatbotBox">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+        <div>
+          <div style="font-weight:700; font-size:0.9rem;">Trợ Lý AI - Ngọc Như</div>
+          <div style="font-size:0.72rem; opacity:0.85;">Trực tuyến 24/7</div>
+        </div>
+      </div>
+      <i class="fas fa-times" id="chatbotClose" style="cursor:pointer; font-size:1.1rem;"></i>
+    </div>
+
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        Bạn đang xem Album ảnh! Có cần mình hướng dẫn bức ảnh nào không?
+      </div>
+    </div>
+
+    <div class="chatbot-suggestions">
+      <button class="chip-btn" onclick="sendQuickChat('Bức ảnh Nam Cát Tiên chụp lúc nào?')">🌿 Nam Cát Tiên</button>
+      <button class="chip-btn" onclick="sendQuickChat('Chuyến đi Huế thế nào?')">🏯 Huế 2025</button>
+    </div>
+
+    <div class="chatbot-input-bar">
+      <input type="text" id="chatInput" placeholder="Nhập câu hỏi..." onkeypress="handleChatEnter(event)" />
+      <button id="chatSendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2026 Lạc Ngọc Như. Designed with <i class="fas fa-heart" style="color:#F43F5E;"></i> White & Blue Tech-Marketing Style.</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
