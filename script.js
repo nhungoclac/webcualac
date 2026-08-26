@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         focusBadge.style.background = 'linear-gradient(135deg, #2563EB 0%, #8B5CF6 100%)';
       }
       if (heroBioText) {
-        heroBioText.innerHTML = 'Chào bạn! Mình là Ngọc Như. Ở chế độ <strong>Marketing & MarTech</strong>, mình tập trung vào xây dựng chiến lược nội dung, phân tích thương hiệu số và tối ưu hóa trải nghiệm truyền thông cá nhân!';
+        heroBioText.innerText = 'Mình là Lạc. Yêu truyền thông, thích công nghệ. Website này được tạo nên bởi vibe-coding, lưu giữ những điều hay ho trong quá trình trưởng thành. Hy vọng trong 10 năm tới, mình sẽ là một cái tên có chỗ đứng vững chắc trong ngành nghề mà mình đã theo đuổi!';
       }
       if (skillSectionTitle) skillSectionTitle.innerText = 'Chiến Lược Truyền Thông & Marketing Số';
     } else {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         focusBadge.style.background = 'var(--accent-gradient)';
       }
       if (heroBioText) {
-        heroBioText.innerHTML = 'Chào bạn! Mình là Ngọc Như. Mình đam mê sự giao thoa giữa <strong>Công Nghệ Thông Tin</strong> và <strong>Digital Marketing</strong>. Website này được thiết kế để chia sẻ hành trình, kỹ năng và là không gian giao lưu kết nối!';
+        heroBioText.innerText = 'Mình là Lạc. Yêu truyền thông, thích công nghệ. Website này được tạo nên bởi vibe-coding, lưu giữ những điều hay ho trong quá trình trưởng thành. Hy vọng trong 10 năm tới, mình sẽ là một cái tên có chỗ đứng vững chắc trong ngành nghề mà mình đã theo đuổi!';
       }
       if (skillSectionTitle) skillSectionTitle.innerText = 'Ma Trận Kỹ Năng (IT x Marketing)';
     }
