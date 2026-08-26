@@ -83,10 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const typewriterElement = document.getElementById('typewriter');
   if (typewriterElement) {
     const phrases = [
-      'IT Specialist 💻',
-      'Digital Marketer 🚀',
-      'MarTech Enthusiast 🎨',
-      'Frontend Web Creator ⚡'
+      'Ecommerce',
+      'Branding',
+      'MarTech'
     ];
     let phraseIdx = 0;
     let charIdx = 0;
