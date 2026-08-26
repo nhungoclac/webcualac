@@ -1,216 +1,435 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>webcualac</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webcualac</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-  <!-- Ambient Glow Effects -->
-  <div class="ambient-glow"></div>
-  <div class="ambient-glow-2"></div>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-  <!-- Header & Navigation -->
-  <header class="site-header">
-    <div class="nav-container">
-      <a href="index.html" class="brand-logo">
-        <div class="brand-icon"><i class="fas fa-code-branch"></i></div>
-        <span class="brand-text">LacNgocNhu</span>
-      </a>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Ambient Glow Effects -->
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
 
-      <nav class="main-nav" id="mainNav">
-        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Trang chủ</a>
-        <a href="album.html" class="nav-link"><i class="fas fa-images"></i> Album ảnh</a>
-        <a href="contact.html" class="nav-link active"><i class="fas fa-paper-plane"></i> Liên hệ</a>
-      </nav>
+    <!-- Header & Navigation -->
+    <header class="site-header">
+      <div class="nav-container">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon"><i class="fas fa-code-branch"></i></div>
+          <span class="brand-text">LacNgocNhu</span>
+        </a>
 
-      <div class="nav-actions">
-        <!-- Mobile Hamburger Menu Button -->
-        <button class="btn-icon mobile-menu-btn" id="mobileMenuBtn" title="Menu Điều Hướng" aria-label="Menu">
-          <i class="fas fa-bars" id="mobileMenuIcon"></i>
-        </button>
+        <nav class="main-nav" id="mainNav">
+          <a href="index.html" class="nav-link"
+            ><i class="fas fa-home"></i> Trang chủ</a
+          >
+          <a href="album.html" class="nav-link"
+            ><i class="fas fa-images"></i> Album ảnh</a
+          >
+          <a href="contact.html" class="nav-link active"
+            ><i class="fas fa-paper-plane"></i> Liên hệ</a
+          >
+        </nav>
 
-        <!-- Dark / Light Theme Toggle -->
-        <button class="btn-icon" id="themeToggle" title="Đổi giao diện Sáng / Tối">
-          <i class="fas fa-moon" id="themeIcon"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content Container -->
-  <main class="container">
-    
-    <div class="grid-layout">
-      
-      <!-- Cột trái: Kênh liên hệ chính & Thông tin -->
-      <section class="card">
-        <h2 class="card-title"><i class="fas fa-address-card"></i> Kênh Liên Hệ Trực Tiếp</h2>
-        <p style="color:var(--text-sub); margin-bottom: 20px; font-size:0.92rem;">
-          Bạn có thể kết nối với Lạc Ngọc Như qua các nền tảng mạng xã hội hoặc gửi email trao đổi công việc / học tập:
-        </p>
-
-        <div style="display:flex; flex-direction:column; gap:14px;">
-          
-          <a href="mailto:nhulacngoc@gmail.com" class="skill-card" style="display:flex; align-items:center; gap:16px; text-decoration:none;">
-            <div class="skill-icon" style="margin:0;"><i class="fas fa-envelope"></i></div>
-            <div>
-              <div style="font-weight:700; color:var(--text-main);">Email Cá Nhân</div>
-              <div style="font-size:0.85rem; color:var(--accent-blue);">nhulacngoc@gmail.com</div>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/nh%C6%B0-l%E1%BA%A1c-ng%E1%BB%8Dc-947009350/" target="_blank" rel="noopener" class="skill-card" style="display:flex; align-items:center; gap:16px; text-decoration:none;">
-            <div class="skill-icon" style="margin:0; background:linear-gradient(135deg, #0A66C2 0%, #0077B5 100%);"><i class="fab fa-linkedin-in"></i></div>
-            <div>
-              <div style="font-weight:700; color:var(--text-main);">LinkedIn</div>
-              <div style="font-size:0.85rem; color:var(--accent-blue);">Như Lạc Ngọc</div>
-            </div>
-          </a>
-
-          <a href="https://www.facebook.com/lacnhu04" target="_blank" rel="noopener" class="skill-card" style="display:flex; align-items:center; gap:16px; text-decoration:none;">
-            <div class="skill-icon" style="margin:0; background:linear-gradient(135deg, #1877F2 0%, #4267B2 100%);"><i class="fab fa-facebook-f"></i></div>
-            <div>
-              <div style="font-weight:700; color:var(--text-main);">Facebook</div>
-              <div style="font-size:0.85rem; color:var(--accent-blue);">Lạc Như (lacnhu04)</div>
-            </div>
-          </a>
-
-          <a href="https://www.instagram.com/lacnhu04" target="_blank" rel="noopener" class="skill-card" style="display:flex; align-items:center; gap:16px; text-decoration:none;">
-            <div class="skill-icon" style="margin:0; background:linear-gradient(135deg, #E1306C 0%, #F56040 100%);"><i class="fab fa-instagram"></i></div>
-            <div>
-              <div style="font-weight:700; color:var(--text-main);">Instagram</div>
-              <div style="font-size:0.85rem; color:var(--accent-blue);">@lacnhu04</div>
-            </div>
-          </a>
-
-        </div>
-
-        <div style="margin-top:24px; background-color:var(--bg-card-subtle); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border-color);">
-          <div style="font-weight:700; font-size:0.92rem; color:var(--text-main); margin-bottom:4px;">
-            <i class="fas fa-headset" style="color:var(--accent-blue);"></i> Tawk.to Live Chat
-          </div>
-          <div style="font-size:0.84rem; color:var(--text-sub);">
-            Hệ thống Tawk.to Livechat đã được tích hợp ở góc dưới màn hình. Bạn có thể nhắn tin trực tiếp để nhận phản hồi sớm nhất!
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Cột phải: Formspree & Guestbook -->
-      <section class="card">
-        <h2 class="card-title"><i class="fas fa-comment-dots"></i> Gửi Tin Nhắn Ẩn Danh (Formspree)</h2>
-        <p style="color:var(--text-sub); font-size:0.88rem; margin-bottom:16px;">
-          Lời nhắn của bạn sẽ được gửi thẳng về Email cá nhân thông qua Formspree và lưu lại trong sổ lưu niệm ẩn danh bên dưới!
-        </p>
-
-        <form id="anonymousForm" action="https://formspree.io/f/myklbebk" method="POST">
-          <div class="form-group">
-            <label><i class="fas fa-user-secret"></i> Biệt danh (Tùy chọn)</label>
-            <input type="text" name="name" id="anonName" class="form-control" placeholder="Người bí ẩn..." />
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-envelope"></i> Email của bạn (Không bắt buộc)</label>
-            <input type="email" name="email" class="form-control" placeholder="example@gmail.com" />
-          </div>
-
-          <div class="form-group">
-            <label><i class="fas fa-pen-fancy"></i> Nội dung lời nhắn *</label>
-            <textarea name="message" rows="4" class="form-control" placeholder="Nhập câu hỏi, lời góp ý hoặc tin nhắn nhắn gửi..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary" style="width:100%;">
-            <i class="fas fa-paper-plane"></i> Gửi Lời Nhắn Ngay
+        <div class="nav-actions">
+          <!-- Mobile Hamburger Menu Button -->
+          <button
+            class="btn-icon mobile-menu-btn"
+            id="mobileMenuBtn"
+            title="Menu Điều Hướng"
+            aria-label="Menu"
+          >
+            <i class="fas fa-bars" id="mobileMenuIcon"></i>
           </button>
-          
-          <div id="formStatus" style="margin-top:10px; font-size:0.88rem; font-weight:600; text-align:center;"></div>
-        </form>
 
-        <hr style="margin: 24px 0; border: none; border-top: 1px solid var(--border-color);" />
+          <!-- Dark / Light Theme Toggle -->
+          <button
+            class="btn-icon"
+            id="themeToggle"
+            title="Đổi giao diện Sáng / Tối"
+          >
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
 
-        <!-- Sổ lưu niệm (Guestbook) -->
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <h3 style="font-size:1.05rem; font-weight:700;"><i class="fas fa-book-open" style="color:var(--accent-blue);"></i> Sổ Lưu Niệm Trực Tuyến</h3>
-            <button id="clearGuestbookBtn" class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;">
-              <i class="fas fa-trash-alt"></i> Xóa lịch sử
+    <!-- Main Content Container -->
+    <main class="container">
+      <div class="grid-layout">
+        <!-- Cột trái: Kênh liên hệ chính & Thông tin -->
+        <section class="card">
+          <h2 class="card-title">
+            <i class="fas fa-address-card"></i> Kênh Liên Hệ Trực Tiếp
+          </h2>
+          <p
+            style="
+              color: var(--text-sub);
+              margin-bottom: 20px;
+              font-size: 0.92rem;
+            "
+          >
+            Bạn có thể kết nối với Lạc Ngọc Như qua các nền tảng mạng xã hội
+            hoặc gửi email trao đổi công việc / học tập:
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <a
+              href="mailto:nhulacngoc@gmail.com"
+              class="skill-card"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                text-decoration: none;
+              "
+            >
+              <div class="skill-icon" style="margin: 0">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <div style="font-weight: 700; color: var(--text-main)">
+                  Email Cá Nhân
+                </div>
+                <div style="font-size: 0.85rem; color: var(--accent-blue)">
+                  nhulacngoc@gmail.com
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/nh%C6%B0-l%E1%BA%A1c-ng%E1%BB%8Dc-947009350/"
+              target="_blank"
+              rel="noopener"
+              class="skill-card"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                text-decoration: none;
+              "
+            >
+              <div
+                class="skill-icon"
+                style="
+                  margin: 0;
+                  background: linear-gradient(135deg, #0a66c2 0%, #0077b5 100%);
+                "
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div>
+                <div style="font-weight: 700; color: var(--text-main)">
+                  LinkedIn
+                </div>
+                <div style="font-size: 0.85rem; color: var(--accent-blue)">
+                  Như Lạc Ngọc
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://www.facebook.com/lacnhu04"
+              target="_blank"
+              rel="noopener"
+              class="skill-card"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                text-decoration: none;
+              "
+            >
+              <div
+                class="skill-icon"
+                style="
+                  margin: 0;
+                  background: linear-gradient(135deg, #1877f2 0%, #4267b2 100%);
+                "
+              >
+                <i class="fab fa-facebook-f"></i>
+              </div>
+              <div>
+                <div style="font-weight: 700; color: var(--text-main)">
+                  Facebook
+                </div>
+                <div style="font-size: 0.85rem; color: var(--accent-blue)">
+                  Lạc Như (lacnhu04)
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="https://www.instagram.com/lacnhu04"
+              target="_blank"
+              rel="noopener"
+              class="skill-card"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                text-decoration: none;
+              "
+            >
+              <div
+                class="skill-icon"
+                style="
+                  margin: 0;
+                  background: linear-gradient(135deg, #e1306c 0%, #f56040 100%);
+                "
+              >
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div>
+                <div style="font-weight: 700; color: var(--text-main)">
+                  Instagram
+                </div>
+                <div style="font-size: 0.85rem; color: var(--accent-blue)">
+                  @lacnhu04
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div
+            style="
+              margin-top: 24px;
+              background-color: var(--bg-card-subtle);
+              padding: 16px;
+              border-radius: var(--radius-md);
+              border: 1px solid var(--border-color);
+            "
+          >
+            <div
+              style="
+                font-weight: 700;
+                font-size: 0.92rem;
+                color: var(--text-main);
+                margin-bottom: 4px;
+              "
+            >
+              <i class="fas fa-headset" style="color: var(--accent-blue)"></i>
+              Live Chat
+            </div>
+            <div style="font-size: 0.84rem; color: var(--text-sub)">
+              Hệ thống Livechat đã được tích hợp ở góc dưới màn hình. Bạn có thể
+              nhắn tin trực tiếp để nhận phản hồi sớm nhất!
+            </div>
+          </div>
+        </section>
+
+        <!-- Cột phải: Formspree & Guestbook -->
+        <section class="card">
+          <h2 class="card-title">
+            <i class="fas fa-comment-dots"></i> Gửi Tin Nhắn Ẩn Danh
+          </h2>
+          <p
+            style="
+              color: var(--text-sub);
+              font-size: 0.88rem;
+              margin-bottom: 16px;
+            "
+          >
+            Lời nhắn của bạn sẽ được gửi thẳng về Email cá nhân thông qua
+            Formspree và lưu lại trong sổ lưu niệm ẩn danh bên dưới!
+          </p>
+
+          <form
+            id="anonymousForm"
+            action="https://formspree.io/f/myklbebk"
+            method="POST"
+          >
+            <div class="form-group">
+              <label
+                ><i class="fas fa-user-secret"></i> Biệt danh (Tùy chọn)</label
+              >
+              <input
+                type="text"
+                name="name"
+                id="anonName"
+                class="form-control"
+                placeholder="Người bí ẩn..."
+              />
+            </div>
+
+            <div class="form-group">
+              <label
+                ><i class="fas fa-envelope"></i> Email của bạn (Không bắt
+                buộc)</label
+              >
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="example@gmail.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label
+                ><i class="fas fa-pen-fancy"></i> Nội dung lời nhắn *</label
+              >
+              <textarea
+                name="message"
+                rows="4"
+                class="form-control"
+                placeholder="Nhập câu hỏi, lời góp ý hoặc tin nhắn nhắn gửi..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%">
+              <i class="fas fa-paper-plane"></i> Gửi Lời Nhắn Ngay
             </button>
-          </div>
 
-          <div class="guestbook-list" id="guestbookList">
-            <!-- Rendered by script.js -->
+            <div
+              id="formStatus"
+              style="
+                margin-top: 10px;
+                font-size: 0.88rem;
+                font-weight: 600;
+                text-align: center;
+              "
+            ></div>
+          </form>
+
+          <hr
+            style="
+              margin: 24px 0;
+              border: none;
+              border-top: 1px solid var(--border-color);
+            "
+          />
+
+          <!-- Sổ lưu niệm (Guestbook) -->
+          <div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h3 style="font-size: 1.05rem; font-weight: 700">
+                <i
+                  class="fas fa-book-open"
+                  style="color: var(--accent-blue)"
+                ></i>
+                Sổ Lưu Niệm Trực Tuyến
+              </h3>
+              <button
+                id="clearGuestbookBtn"
+                class="btn-secondary"
+                style="padding: 4px 10px; font-size: 0.75rem"
+              >
+                <i class="fas fa-trash-alt"></i> Xóa lịch sử
+              </button>
+            </div>
+
+            <div class="guestbook-list" id="guestbookList">
+              <!-- Rendered by script.js -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- AI Chatbot Floating Trigger & Box -->
+    <div
+      class="chatbot-trigger"
+      id="chatbotTrigger"
+      title="Trò chuyện cùng Trợ lý AI Ngọc Như"
+    >
+      <i class="fas fa-robot"></i>
+    </div>
+
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="chatbot-header">
+        <div class="chatbot-header-info">
+          <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.9rem">
+              Trợ Lý AI - Ngọc Như
+            </div>
+            <div style="font-size: 0.72rem; opacity: 0.85">Trực tuyến 24/7</div>
           </div>
         </div>
+        <i
+          class="fas fa-times"
+          id="chatbotClose"
+          style="cursor: pointer; font-size: 1.1rem"
+        ></i>
+      </div>
 
-      </section>
-
-    </div>
-
-  </main>
-
-  <!-- AI Chatbot Floating Trigger & Box -->
-  <div class="chatbot-trigger" id="chatbotTrigger" title="Trò chuyện cùng Trợ lý AI Ngọc Như">
-    <i class="fas fa-robot"></i>
-  </div>
-
-  <div class="chatbot-box" id="chatbotBox">
-    <div class="chatbot-header">
-      <div class="chatbot-header-info">
-        <div class="chatbot-avatar"><i class="fas fa-robot"></i></div>
-        <div>
-          <div style="font-weight:700; font-size:0.9rem;">Trợ Lý AI - Ngọc Như</div>
-          <div style="font-size:0.72rem; opacity:0.85;">Trực tuyến 24/7</div>
+      <div class="chatbot-messages" id="chatMessages">
+        <div class="chat-msg bot">
+          Bạn có câu hỏi gì về cách gửi Formspree hoặc kết nối qua Gmail/Socials
+          không?
         </div>
       </div>
-      <i class="fas fa-times" id="chatbotClose" style="cursor:pointer; font-size:1.1rem;"></i>
-    </div>
 
-    <div class="chatbot-messages" id="chatMessages">
-      <div class="chat-msg bot">
-        Bạn có câu hỏi gì về cách gửi Formspree hoặc kết nối qua Gmail/Socials không?
+      <div class="chatbot-suggestions">
+        <button
+          class="chip-btn"
+          onclick="sendQuickChat('Email chính xác là gì?')"
+        >
+          📧 Email
+        </button>
+        <button
+          class="chip-btn"
+          onclick="sendQuickChat('Formspree hoạt động thế nào?')"
+        >
+          📝 Formspree
+        </button>
+      </div>
+
+      <div class="chatbot-input-bar">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Nhập câu hỏi..."
+          onkeypress="handleChatEnter(event)"
+        />
+        <button id="chatSendBtn" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
       </div>
     </div>
 
-    <div class="chatbot-suggestions">
-      <button class="chip-btn" onclick="sendQuickChat('Email chính xác là gì?')">📧 Email</button>
-      <button class="chip-btn" onclick="sendQuickChat('Formspree hoạt động thế nào?')">📝 Formspree</button>
-    </div>
+    <!-- Tawk.to Widget Script Integration -->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/66f86534e5982d6c7bb61f6a/1i8t4mm94";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
 
-    <div class="chatbot-input-bar">
-      <input type="text" id="chatInput" placeholder="Nhập câu hỏi..." onkeypress="handleChatEnter(event)" />
-      <button id="chatSendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-    </div>
-  </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>
+        © 2026 Lạc Ngọc Như. Designed with
+        <i class="fas fa-heart" style="color: #f43f5e"></i> White & Blue
+        Tech-Marketing Style.
+      </p>
+    </footer>
 
-  <!-- Tawk.to Widget Script Integration -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = "https://embed.tawk.to/66f86534e5982d6c7bb61f6a/1i8t4mm94";
-      s1.charset = "UTF-8";
-      s1.setAttribute("crossorigin", "*");
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p>© 2026 Lạc Ngọc Như. Designed with <i class="fas fa-heart" style="color:#F43F5E;"></i> White & Blue Tech-Marketing Style.</p>
-  </footer>
-
-  <!-- Script -->
-  <script src="script.js"></script>
-</body>
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
 </html>
