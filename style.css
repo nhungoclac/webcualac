@@ -1067,35 +1067,283 @@ body.dark .site-header {
   margin-top: 40px;
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 900px) {
-  .hero-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-    padding: 30px 20px;
+/* =========================================================
+   RESPONSIVE BREAKPOINTS (iPad & Mobile Optimization)
+   ========================================================= */
+
+/* --- iPad & Tablet (768px - 1024px) --- */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 16px 50px;
   }
+
+  .hero-card {
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+    padding: 30px 24px;
+  }
+
   .avatar-wrapper {
     width: 180px;
     height: 180px;
   }
-  .hero-badges, .hero-contacts {
-    justify-content: center;
+
+  .hero-name {
+    font-size: 2rem;
   }
+
   .grid-layout {
-    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .album-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+/* --- Mobile & Small Screens (<= 768px) --- */
+@media (max-width: 768px) {
+  .site-header {
+    margin-bottom: 20px;
+  }
+
   .nav-container {
-    padding: 12px 14px;
+    padding: 10px 14px;
   }
-  .brand-text {
-    display: none;
+
+  .brand-logo {
+    font-size: 1.15rem;
   }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+
+  .main-nav {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .nav-link {
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    gap: 5px;
+  }
+
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .card {
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 28px 18px;
+    gap: 20px;
+  }
+
+  .avatar-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hero-info {
+    align-items: center;
+  }
+
+  .hero-badges {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .badge {
+    padding: 4px 10px;
+    font-size: 0.76rem;
+  }
+
   .hero-name {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
   }
+
+  .hero-role-wrapper {
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .hero-bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .hero-contacts {
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .contact-pill {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    flex: 1 1 calc(50% - 10px);
+    justify-content: center;
+    min-width: 130px;
+  }
+
+  .grid-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .stat-item {
+    padding: 12px 8px;
+  }
+
+  .stat-value {
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  /* Album Gallery Responsive */
+  .album-controls {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .album-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .album-card {
+    aspect-ratio: 1 / 1;
+  }
+
+  .album-overlay {
+    padding: 10px;
+  }
+
+  .album-title {
+    font-size: 0.85rem;
+  }
+
+  .album-tag {
+    font-size: 0.7rem;
+  }
+
+  /* Modal Lightbox Mobile */
+  .modal {
+    padding: 10px;
+  }
+
+  .modal-content {
+    max-width: 96vw;
+    max-height: 70vh;
+  }
+
+  .modal-caption {
+    font-size: 0.95rem;
+    margin-top: 10px;
+  }
+
+  .modal-close {
+    top: 12px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+  }
+
+  .modal-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .modal-prev { left: 8px; }
+  .modal-next { right: 8px; }
+
+  /* Input fields (prevent iOS zoom on focus) */
+  .form-control, .select-custom, .chatbot-input-bar input {
+    font-size: 16px !important;
+  }
+
+  /* AI Floating Chatbot Mobile Drawer */
+  .chatbot-trigger {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+    font-size: 1.3rem;
+  }
+
+  .chatbot-box {
+    bottom: 78px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+    height: calc(100vh - 120px);
+    max-height: 500px;
+    border-radius: var(--radius-md);
+  }
+}
+
+/* --- Extra Small Screens (<= 420px) --- */
+@media (max-width: 420px) {
+  .brand-text {
+    font-size: 0.95rem;
+  }
+
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+  }
+
+  .nav-link i {
+    display: none; /* Hide icons on very small screens for clean text pill */
+  }
+
+  .hero-name {
+    font-size: 1.5rem;
+  }
+
+  .contact-pill {
+    flex: 1 1 100%;
+  }
+
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
