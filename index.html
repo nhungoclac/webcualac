@@ -131,13 +131,13 @@
         </div>
       </section>
 
-      <!-- Section 2: IT x Marketing Synergy Matrix -->
+      <!-- Section 2: Skills & Formspree Anonymous Chat -->
       <div class="grid-layout">
         <!-- Skill Cards Left -->
         <section class="card">
           <div class="card-title">
             <i class="fas fa-layer-group"></i>
-            <span id="skillSectionTitle">Ma Trận Kỹ Năng (IT x Marketing)</span>
+            <span id="skillSectionTitle">Mình Có Gì</span>
           </div>
 
           <div class="skill-grid" id="skillGrid">
@@ -145,18 +145,14 @@
               <div class="skill-icon"><i class="fas fa-code"></i></div>
               <div class="skill-title">Web Development</div>
               <div class="skill-desc">
-                HTML5, CSS3, JavaScript, UI/UX Responsive Layouts & Web
-                Performance.
+                HTML, CSS, JavaScript, UI/UX Responsive Layouts.
               </div>
             </div>
 
             <div class="skill-card">
               <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-              <div class="skill-title">Digital Marketing</div>
-              <div class="skill-desc">
-                SEO Content Strategy, Social Media Campaigns & Brand
-                Positioning.
-              </div>
+              <div class="skill-title">Marketing</div>
+              <div class="skill-desc">SEO & Social Media Campaigns.</div>
             </div>
 
             <div class="skill-card">
@@ -197,104 +193,117 @@
           </div>
         </section>
 
-        <!-- Fun Stats & Music Right -->
+        <!-- Formspree Anonymous Chat / Message Form Right -->
         <section class="card">
           <div class="card-title">
-            <i class="fas fa-bolt"></i>
-            <span>Tiện Ích Tương Tác & Thư Giãn</span>
+            <i class="fas fa-comment-dots"></i>
+            <span>Gửi Tin Nhắn Ẩn Danh</span>
           </div>
+          <p
+            style="
+              color: var(--text-sub);
+              font-size: 0.88rem;
+              margin-bottom: 16px;
+            "
+          >
+            Lời nhắn của bạn sẽ được gửi ẩn danh trực tiếp đến email cá nhân
+            thông qua Formspree và lưu vào sổ lưu niệm bên dưới!
+          </p>
 
-          <div class="stats-grid">
-            <div class="stat-item">
-              <i class="far fa-clock" style="color: var(--accent-blue)"></i>
-              <div class="stat-value" id="liveClock">00:00:00</div>
-              <div class="stat-label">Giờ Việt Nam</div>
+          <form
+            id="anonymousForm"
+            action="https://formspree.io/f/myklbebk"
+            method="POST"
+          >
+            <div class="form-group">
+              <label
+                ><i class="fas fa-user-secret"></i> Biệt danh (Tùy chọn)</label
+              >
+              <input
+                type="text"
+                name="name"
+                id="anonName"
+                class="form-control"
+                placeholder="Người bí ẩn..."
+              />
             </div>
 
-            <div class="stat-item">
-              <i class="fas fa-heart" style="color: #f43f5e"></i>
-              <div class="stat-value" id="likeCount">0</div>
-              <div class="stat-label">Lượt thích trang</div>
+            <div class="form-group">
+              <label
+                ><i class="fas fa-envelope"></i> Email (Không bắt buộc)</label
+              >
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="example@gmail.com"
+              />
             </div>
 
-            <div class="stat-item">
-              <i class="fas fa-lightbulb" style="color: #f59e0b"></i>
-              <div class="stat-value" id="factCount">#1</div>
-              <div class="stat-label">Cảm hứng hôm nay</div>
+            <div class="form-group">
+              <label
+                ><i class="fas fa-pen-fancy"></i> Nội dung lời nhắn *</label
+              >
+              <textarea
+                name="message"
+                rows="3"
+                class="form-control"
+                placeholder="Nhập câu hỏi, lời nhắn hoặc góp ý..."
+                required
+              ></textarea>
             </div>
-          </div>
 
-          <div style="margin-top: 16px; display: flex; gap: 10px">
-            <button class="btn-secondary" id="likeBtn" style="flex: 1">
-              <i class="fas fa-thumbs-up" style="color: var(--accent-blue)"></i>
-              Thả Tim Ngay!
+            <button type="submit" class="btn-primary" style="width: 100%">
+              <i class="fas fa-paper-plane"></i> Gửi Ẩn Danh Ngay
             </button>
-            <button class="btn-secondary" id="factBtn" style="flex: 1">
-              <i class="fas fa-random"></i> Đổi Cảm Hứng
-            </button>
-          </div>
 
-          <div class="guestbook-item" style="margin-top: 16px">
-            <i class="fas fa-quote-left" style="color: var(--accent-cyan)"></i>
-            <span
-              id="factText"
-              style="font-size: 0.9rem; font-style: italic; margin-left: 8px"
-              >"Sự kết hợp giữa công nghệ và marketing tạo nên sức mạnh truyền
-              thông hiện đại."</span
-            >
-          </div>
+            <div
+              id="formStatus"
+              style="
+                margin-top: 10px;
+                font-size: 0.88rem;
+                font-weight: 600;
+                text-align: center;
+              "
+            ></div>
+          </form>
 
-          <!-- Music Player Widget -->
-          <div class="music-player-box">
+          <hr
+            style="
+              margin: 20px 0;
+              border: none;
+              border-top: 1px solid var(--border-color);
+            "
+          />
+
+          <!-- Sổ lưu niệm (Guestbook) -->
+          <div>
             <div
               style="
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
-                gap: 10px;
-                font-weight: 600;
-                font-size: 0.92rem;
               "
             >
-              <i class="fas fa-music" style="color: var(--accent-blue)"></i>
-              <span id="songNameDisplay">Góc Nhạc Thư Giãn</span>
-            </div>
-
-            <div class="music-controls-row">
-              <select id="songSelect" class="select-custom">
-                <option value="">-- Chọn Giai Điệu --</option>
-                <option
-                  value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-                >
-                  🎵 Chill Lofi Coding #1
-                </option>
-                <option
-                  value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-                >
-                  🎵 Deep Work Focus #2
-                </option>
-                <option
-                  value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-                >
-                  🎵 Creative Marketing Flow #3
-                </option>
-              </select>
-
+              <h3 style="font-size: 1rem; font-weight: 700">
+                <i
+                  class="fas fa-book-open"
+                  style="color: var(--accent-blue)"
+                ></i>
+                Sổ Lưu Niệm Trực Tuyến
+              </h3>
               <button
-                id="playSongBtn"
-                class="btn-primary"
-                style="padding: 10px 16px"
-              >
-                <i class="fas fa-play"></i>
-              </button>
-              <button
-                id="stopSongBtn"
+                id="clearGuestbookBtn"
                 class="btn-secondary"
-                style="padding: 10px 16px"
+                style="padding: 4px 10px; font-size: 0.75rem"
               >
-                <i class="fas fa-stop"></i>
+                <i class="fas fa-trash-alt"></i> Xóa lịch sử
               </button>
             </div>
-            <audio id="audioPlayer" style="display: none"></audio>
+
+            <div class="guestbook-list" id="guestbookList">
+              <!-- Rendered by script.js -->
+            </div>
           </div>
         </section>
       </div>

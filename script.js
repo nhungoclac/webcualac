@@ -80,8 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         heroBioText.innerText =
           "Mình là Lạc. Yêu truyền thông, thích công nghệ. Website này được tạo nên bởi vibe-coding, lưu giữ những điều hay ho trong quá trình trưởng thành của mình. Hy vọng trong 10 năm tới, mình sẽ là một cái tên có chỗ đứng vững chắc trong ngành nghề mà mình đã theo đuổi!";
       }
-      if (skillSectionTitle)
-        skillSectionTitle.innerText = "Chiến Lược Truyền Thông & Marketing Số";
+      if (skillSectionTitle) skillSectionTitle.innerText = "Mình Có Gì";
     } else {
       if (focusIcon) focusIcon.className = "fas fa-laptop-code";
       if (focusText) focusText.innerText = "Góc IT";
@@ -93,8 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         heroBioText.innerText =
           "Mình là Lạc. Yêu truyền thông, thích công nghệ. Website này được tạo nên bởi vibe-coding, lưu giữ những điều hay ho trong quá trình trưởng thành của mình. Hy vọng trong 10 năm tới, mình sẽ là một cái tên có chỗ đứng vững chắc trong ngành nghề mà mình đã theo đuổi!";
       }
-      if (skillSectionTitle)
-        skillSectionTitle.innerText = "Ma Trận Kỹ Năng (IT x Marketing)";
+      if (skillSectionTitle) skillSectionTitle.innerText = "Mình Có Gì";
     }
     localStorage.setItem("focusMode", mode);
   }
