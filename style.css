@@ -261,6 +261,10 @@ body.dark .site-header {
   transform: translateY(-2px);
 }
 
+.mobile-menu-btn {
+  display: none;
+}
+
 /* Tech / Marketing Mode Switcher Pill */
 .mode-switch-btn {
   display: flex;
@@ -1121,15 +1125,41 @@ body.dark .site-header {
     font-size: 0.95rem;
   }
 
+  .mobile-menu-btn {
+    display: flex;
+  }
+
   .main-nav {
-    gap: 4px;
-    padding: 4px;
+    position: absolute;
+    top: 100%;
+    left: 14px;
+    right: 14px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: var(--transition);
+    z-index: 100;
+  }
+
+  .main-nav.mobile-active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(8px);
   }
 
   .nav-link {
-    padding: 6px 12px;
-    font-size: 0.82rem;
-    gap: 5px;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    justify-content: flex-start;
+    font-size: 0.92rem;
   }
 
   .btn-icon {

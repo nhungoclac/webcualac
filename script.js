@@ -29,6 +29,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ---------------------------------------------------------
+     Mobile Hamburger Menu Toggle (3 gạch)
+     --------------------------------------------------------- */
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const mobileMenuIcon = document.getElementById("mobileMenuIcon");
+  const mainNav = document.getElementById("mainNav");
+
+  mobileMenuBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mainNav?.classList.toggle("mobile-active");
+    const isActive = mainNav?.classList.contains("mobile-active");
+    if (mobileMenuIcon) {
+      mobileMenuIcon.className = isActive ? "fas fa-times" : "fas fa-bars";
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      mainNav?.classList.contains("mobile-active") &&
+      !mainNav.contains(e.target) &&
+      !mobileMenuBtn?.contains(e.target)
+    ) {
+      mainNav.classList.remove("mobile-active");
+      if (mobileMenuIcon) mobileMenuIcon.className = "fas fa-bars";
+    }
+  });
+
+  /* ---------------------------------------------------------
      2. IT x Marketing Focus Mode Switcher
      --------------------------------------------------------- */
   const focusModeToggle = document.getElementById("focusModeToggle");
