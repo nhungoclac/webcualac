@@ -384,13 +384,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ---------------------------------------------------------
-     9. Formspree & Local Storage Guestbook (contact.html)
+     9. Formspree & Global Cloud Sync Guestbook
      --------------------------------------------------------- */
   const anonymousForm = document.getElementById("anonymousForm");
   const formStatus = document.getElementById("formStatus");
   const guestbookList = document.getElementById("guestbookList");
 
-  // Các tin nhắn lưu niệm mặc định bền vững
+  const CLOUD_OBJECT_URL =
+    "https://api.restful-api.dev/objects/ff8081819ff5b11001a042769ffc3290";
+
+  // Các tin nhắn lưu niệm mặc định ban đầu
   const initialGuestbookMessages = [
     {
       name: "Người bạn giấu tên ✨",
@@ -420,10 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
     guestMessages = initialGuestbookMessages;
   }
 
-  // Tự động lưu khởi tạo vĩnh viễn vào localStorage
-  localStorage.setItem("lac_guestbook_msgs", JSON.stringify(guestMessages));
-
-  function saveGuestbook() {
+  function saveGuestbookLocal() {
     localStorage.setItem("lac_guestbook_msgs", JSON.stringify(guestMessages));
   }
 
@@ -468,6 +468,44 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   }
 
+  // Tải toàn bộ lời nhắn toàn cầu từ Cloud Server
+  async function syncGuestbookFromCloud() {
+    try {
+      const response = await fetch(CLOUD_OBJECT_URL);
+      if (response.ok) {
+        const json = await response.json();
+        if (
+          json &&
+          json.data &&
+          Array.isArray(json.data.messages) &&
+          json.data.messages.length > 0
+        ) {
+          guestMessages = json.data.messages;
+          saveGuestbookLocal();
+          renderGuestbook();
+        }
+      }
+    } catch (err) {
+      console.warn("Cloud sync warning:", err);
+    }
+  }
+
+  // Đẩy lời nhắn mới lên Cloud Server để tất cả mọi máy trên thế giới cùng thấy
+  async function pushGuestbookToCloud(newMsgs) {
+    try {
+      await fetch(CLOUD_OBJECT_URL, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "lacngocnhu_guestbook",
+          data: { messages: newMsgs },
+        }),
+      });
+    } catch (err) {
+      console.warn("Cloud push warning:", err);
+    }
+  }
+
   function addGuestMessage(name, message) {
     if (!message.trim()) return;
     guestMessages.unshift({
@@ -476,16 +514,21 @@ document.addEventListener("DOMContentLoaded", () => {
       timestamp: Date.now(),
     });
 
-    // Giữ tối đa 100 tin nhắn lưu niệm vĩnh viễn
     if (guestMessages.length > 100) {
       guestMessages = guestMessages.slice(0, 100);
     }
 
-    saveGuestbook();
+    saveGuestbookLocal();
     renderGuestbook();
+    pushGuestbookToCloud(guestMessages);
   }
 
-  // Đồng bộ tin nhắn vĩnh viễn tức thì giữa các tab trình duyệt
+  // Khởi chạy đồng bộ Cloud và làm mới tự động mỗi 15 giây
+  renderGuestbook();
+  syncGuestbookFromCloud();
+  setInterval(syncGuestbookFromCloud, 15000);
+
+  // Đồng bộ tức thì nếu đang mở nhiều tab trên cùng máy
   window.addEventListener("storage", (e) => {
     if (e.key === "lac_guestbook_msgs" && e.newValue) {
       try {
@@ -520,11 +563,15 @@ document.addEventListener("DOMContentLoaded", () => {
         addGuestMessage(nameVal, msgVal);
         anonymousForm.reset();
       } else {
+        // Vẫn lưu vào sổ công khai nếu Formspree báo lỗi
+        addGuestMessage(nameVal, msgVal);
         if (formStatus)
           formStatus.innerHTML =
-            '<span style="color:#DC2626;"><i class="fas fa-exclamation-triangle"></i> Gửi thất bại. Hãy thử lại sau!</span>';
+            '<span style="color:#16A34A;"><i class="fas fa-check-circle"></i> Lời nhắn đã lưu vào Sổ lưu niệm!</span>';
+        anonymousForm.reset();
       }
     } catch (err) {
+      addGuestMessage(nameVal, msgVal);
       if (formStatus)
         formStatus.innerHTML =
           '<span style="color:#DC2626;"><i class="fas fa-wifi"></i> Lỗi kết nối mạng! Lời nhắn đã lưu vào sổ tạm thời.</span>';
