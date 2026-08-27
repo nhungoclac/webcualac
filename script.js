@@ -389,11 +389,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const anonymousForm = document.getElementById("anonymousForm");
   const formStatus = document.getElementById("formStatus");
   const guestbookList = document.getElementById("guestbookList");
-  const clearGuestbookBtn = document.getElementById("clearGuestbookBtn");
 
-  let guestMessages = JSON.parse(
-    localStorage.getItem("lac_guestbook_msgs") || "[]",
-  );
+  // Các tin nhắn lưu niệm mặc định bền vững
+  const initialGuestbookMessages = [
+    {
+      name: "Người bạn giấu tên ✨",
+      message:
+        "Chúc Lạc luôn giữ vững ngọn lửa đam mê với truyền thông và công nghệ nhé! 🚀",
+      timestamp: Date.now() - 86400000 * 2,
+    },
+    {
+      name: "Đồng đội UIT 💻",
+      message:
+        "Trang web vừa mượt vừa xinh! Tốt nghiệp loại Giỏi đúng là thành quả cực kỳ xứng đáng. 🎉",
+      timestamp: Date.now() - 86400000 * 5,
+    },
+  ];
+
+  let rawGuestbookData = localStorage.getItem("lac_guestbook_msgs");
+  let guestMessages = [];
+
+  try {
+    guestMessages = rawGuestbookData
+      ? JSON.parse(rawGuestbookData)
+      : initialGuestbookMessages;
+    if (!Array.isArray(guestMessages) || guestMessages.length === 0) {
+      guestMessages = initialGuestbookMessages;
+    }
+  } catch (e) {
+    guestMessages = initialGuestbookMessages;
+  }
+
+  // Tự động lưu khởi tạo vĩnh viễn vào localStorage
+  localStorage.setItem("lac_guestbook_msgs", JSON.stringify(guestMessages));
 
   function saveGuestbook() {
     localStorage.setItem("lac_guestbook_msgs", JSON.stringify(guestMessages));
@@ -425,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     guestbookList.innerHTML = guestMessages
-      .slice(0, 15)
+      .slice(0, 50)
       .map(
         (msg) => `
       <div class="guestbook-item">
@@ -447,9 +475,25 @@ document.addEventListener("DOMContentLoaded", () => {
       message: message.trim(),
       timestamp: Date.now(),
     });
+
+    // Giữ tối đa 100 tin nhắn lưu niệm vĩnh viễn
+    if (guestMessages.length > 100) {
+      guestMessages = guestMessages.slice(0, 100);
+    }
+
     saveGuestbook();
     renderGuestbook();
   }
+
+  // Đồng bộ tin nhắn vĩnh viễn tức thì giữa các tab trình duyệt
+  window.addEventListener("storage", (e) => {
+    if (e.key === "lac_guestbook_msgs" && e.newValue) {
+      try {
+        guestMessages = JSON.parse(e.newValue);
+        renderGuestbook();
+      } catch (err) {}
+    }
+  });
 
   anonymousForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -575,7 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Bạn có thể gửi email trực tiếp qua nhulacngoc@gmail.com hoặc gửi form ẩn danh ở trang Liên hệ nhé!";
     }
     if (lower.includes("formspree") || lower.includes("tin nhắn")) {
-      return "Formspree cho phép bạn gửi tin nhắn trực tiếp đến email của Ngọc Như mà không cần đăng nhập!";
+      return "Form cho phép bạn gửi tin nhắn trực tiếp đến email của Ngọc Như mà không cần đăng nhập!";
     }
     if (
       lower.includes("tuổi") ||
