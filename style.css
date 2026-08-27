@@ -859,10 +859,21 @@ body.dark .site-header {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 320px;
+  max-height: 270px;
   overflow-y: auto;
   padding-right: 6px;
   margin-top: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-blue) transparent;
+}
+
+.guestbook-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.guestbook-list::-webkit-scrollbar-thumb {
+  background: var(--accent-blue);
+  border-radius: 4px;
 }
 
 .guestbook-item {

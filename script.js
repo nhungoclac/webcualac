@@ -393,21 +393,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const CLOUD_OBJECT_URL =
     "https://api.restful-api.dev/objects/ff8081819ff5b11001a042769ffc3290";
 
-  // Các tin nhắn lưu niệm mặc định ban đầu
-  const initialGuestbookMessages = [
-    {
-      name: "Người bạn giấu tên ✨",
-      message:
-        "Chúc Lạc luôn giữ vững ngọn lửa đam mê với truyền thông và công nghệ nhé! 🚀",
-      timestamp: Date.now() - 86400000 * 2,
-    },
-    {
-      name: "Đồng đội UIT 💻",
-      message:
-        "Trang web vừa mượt vừa xinh! Tốt nghiệp loại Giỏi đúng là thành quả cực kỳ xứng đáng. 🎉",
-      timestamp: Date.now() - 86400000 * 5,
-    },
-  ];
+  // Khởi tạo 100% sạch (Không sử dụng tin nhắn mẫu ảo)
+  const initialGuestbookMessages = [];
 
   let rawGuestbookData = localStorage.getItem("lac_guestbook_msgs");
   let guestMessages = [];
@@ -416,12 +403,14 @@ document.addEventListener("DOMContentLoaded", () => {
     guestMessages = rawGuestbookData
       ? JSON.parse(rawGuestbookData)
       : initialGuestbookMessages;
-    if (!Array.isArray(guestMessages) || guestMessages.length === 0) {
-      guestMessages = initialGuestbookMessages;
+    if (!Array.isArray(guestMessages)) {
+      guestMessages = [];
     }
   } catch (e) {
-    guestMessages = initialGuestbookMessages;
+    guestMessages = [];
   }
+
+  let isGuestbookExpanded = false;
 
   function saveGuestbookLocal() {
     localStorage.setItem("lac_guestbook_msgs", JSON.stringify(guestMessages));
@@ -443,17 +432,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderGuestbook() {
     if (!guestbookList) return;
-    if (guestMessages.length === 0) {
+
+    let loadMoreBtn = document.getElementById("loadMoreGuestbookBtn");
+
+    if (!guestMessages || guestMessages.length === 0) {
+      guestbookList.style.maxHeight = "none";
       guestbookList.innerHTML = `
-        <div class="guestbook-item" style="text-align:center; color:var(--text-sub);">
+        <div class="guestbook-item" style="text-align:center; color:var(--text-sub); padding: 18px;">
           <i class="fas fa-inbox"></i> Chưa có lời nhắn nào. Hãy là người đầu tiên để lại tin nhắn nhé!
         </div>
       `;
+      if (loadMoreBtn) loadMoreBtn.style.display = "none";
       return;
     }
 
-    guestbookList.innerHTML = guestMessages
-      .slice(0, 50)
+    // Đảm bảo cố định max-height để khung KHÔNG BAO GIỜ bị kéo dài ra ngoài
+    guestbookList.style.maxHeight = "280px";
+    guestbookList.style.overflowY = "auto";
+
+    const visibleCount = isGuestbookExpanded ? guestMessages.length : 3;
+    const displayedMsgs = guestMessages.slice(0, visibleCount);
+
+    guestbookList.innerHTML = displayedMsgs
       .map(
         (msg) => `
       <div class="guestbook-item">
@@ -466,6 +466,37 @@ document.addEventListener("DOMContentLoaded", () => {
     `,
       )
       .join("");
+
+    // Xử lý nút Xem thêm / Thu gọn
+    if (guestMessages.length > 3) {
+      if (!loadMoreBtn) {
+        loadMoreBtn = document.createElement("button");
+        loadMoreBtn.id = "loadMoreGuestbookBtn";
+        loadMoreBtn.className = "btn-secondary";
+        loadMoreBtn.style.cssText =
+          "width: 100%; margin-top: 10px; padding: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; text-align: center; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-card-subtle); color: var(--accent-blue);";
+        guestbookList.parentNode.appendChild(loadMoreBtn);
+      }
+
+      loadMoreBtn.style.display = "block";
+
+      if (!isGuestbookExpanded) {
+        const remaining = guestMessages.length - 3;
+        loadMoreBtn.innerHTML = `<i class="fas fa-chevron-down"></i> Xem thêm (${remaining} lời nhắn)`;
+        loadMoreBtn.onclick = () => {
+          isGuestbookExpanded = true;
+          renderGuestbook();
+        };
+      } else {
+        loadMoreBtn.innerHTML = `<i class="fas fa-chevron-up"></i> Thu gọn lời nhắn`;
+        loadMoreBtn.onclick = () => {
+          isGuestbookExpanded = false;
+          renderGuestbook();
+        };
+      }
+    } else if (loadMoreBtn) {
+      loadMoreBtn.style.display = "none";
+    }
   }
 
   // Tải toàn bộ lời nhắn toàn cầu từ Cloud Server
@@ -474,12 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch(CLOUD_OBJECT_URL);
       if (response.ok) {
         const json = await response.json();
-        if (
-          json &&
-          json.data &&
-          Array.isArray(json.data.messages) &&
-          json.data.messages.length > 0
-        ) {
+        if (json && json.data && Array.isArray(json.data.messages)) {
           guestMessages = json.data.messages;
           saveGuestbookLocal();
           renderGuestbook();
